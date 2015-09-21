@@ -56,14 +56,10 @@ public class MainActivity extends ActionBarActivity {
         Cursor cursor = resolver.query(UserDictionary.Words.CONTENT_URI, null, null, null, null);
 
         // Set the Adapter to fill the standard two_line_list_item layout with data from the Cursor.
-        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this,
-                android.R.layout.two_line_list_item,
-                cursor,
-                COLUMNS_TO_BE_BOUND,
-                LAYOUT_ITEMS_TO_FILL,
-                0);
 
-        // Attach the adapter to the ListView.
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, android.R.layout.two_line_list_item, cursor, new String[]{Words.WORD, Words.FREQUENCY}, new int[]{android.R.id.text1, android.R.id.text2}, 0);
+
+        // Don't forget to attach the adapter to the ListView
         dictListView.setAdapter(adapter);
     }
 }
